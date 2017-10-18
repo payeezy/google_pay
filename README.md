@@ -1,3 +1,3 @@
-# FirstApi Pay With Google
+# Payeezy Pay With Google
 
-Coming Soon – First API will integrate with Pay With Google API
+Coming Soon – Payeezy will integrate with Pay With Google API
