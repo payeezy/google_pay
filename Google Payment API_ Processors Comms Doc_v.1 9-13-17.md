@@ -1,6 +1,8 @@
 ﻿
 
 ![logo](https://github.com/payeezy/payeezy_pay_with_google/blob/master/images/googlelogo.png)
+
+
 Google Payment API Processor comms document
 ===========================================
 
@@ -36,7 +38,14 @@ For button assets, please refer to Pay with Google Button Toolkit_2.0 PDF docume
 
 **GENERAL**
 **Why is Google introducing the Google Payment API?**
- - More users: The Google Payment API enables third party merchants to offer a streamlined checkout experience to the hundreds of millions of Google users that have a card saved in their Google Account. These   cards originate from any purchase the user has made in a Google product or service as well as from setting up the Android Pay app on their device. 
+
+ - More users: The Google Payment API enables third party merchants to
+   offer a streamlined checkout experience to the hundreds of millions
+   of Google users that have a card saved in their Google Account. These
+   cards originate from any purchase the user has made in a Google
+   product or service as well as from setting up the Android Pay app on
+   their device.
+
  - Consistency: By leaning into the Google brand, we are creating a more consistent experience and letting users know they can pay with their Google Account across Google properties and third party partner apps and websites. 
  - Choice: Users can choose to pay with a card in their Google Account, cards set up in Android Pay, or add a new card natively without ever leaving the merchant app or site.
 
