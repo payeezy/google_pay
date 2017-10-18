@@ -3,7 +3,7 @@
 ![logo](https://github.com/payeezy/payeezy_pay_with_google/blob/master/images/googlelogo.png)
 
 
-Google Payment API Processor comms document
+Google Payment API Processor Comms Document
 ===========================================
 
 **UPDATED SEPTEMBER 13, 2017 (v.1)**
