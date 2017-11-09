@@ -26,11 +26,16 @@ When creating an encryption key, FirstAPI provides the following:
 The typical flow of an application using Pay with Google will be as following:
 
  1. Interacting with the user to get the service or merchandise that the user wishes to purchase. 
- 2. Displaying the "Pay with Google button  
- 4. Sending a credential request to Pay with Google with the Processor name and Merchant ID 
- 5. Obtaining the Payment Credentials signed with the First Data key from Pay with Google
- 6. Using the Payment Credentials to send the request to the FirstAPI server 
- 7. Process the request results
+ 
+ 2. Displaying the "Pay with Google button.
+ 
+ 3. Sending a credential request to Pay with Google with the Processor name and Merchant ID.
+ 
+ 4. Obtaining the Payment Credentials signed with the First Data key from Pay with Google.
+ 
+ 5. Using the Payment Credentials to send the request to the FirstAPI server.
+ 
+ 6. Process the request results
 
 The following sections describe in more detail how to use the FirstAPI credentials to interact with Pay with Google and with FirstAPI.
 
