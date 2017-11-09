@@ -23,15 +23,16 @@ When creating an encryption key, FirstAPI provides the following:
 - The Public key hash
 
 The public key and the public key hash are provided in the Certs page of the FirstAPI Developer Portal.
-Of the five items above, only the public key is required in order to communicate with Pay with Google. The other four are used in communicating with Payeezy.
+Of the five items above, only the public key is required in order to communicate with Pay with Google. The other four are used in communicating with FirstAPI.
 
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
+
  1. Interacting with the user to get the service or merchandise that the user wishes to purchase. 
  2. Displaying the "Pay with Google button with reference to the Masked Wallet request 
  4. Obtaining the Masked Wallet object from Android Pay 
- 5. Obtaining the Full Wallet object from Android Pay 6. Using the token retrieved from the Full Wallet object to send the request to the Payeezy server 
- 7. Process the request results
+ 5. Obtaining the Full Wallet object from Android Pay 6. Using the token retrieved from the Full Wallet object to send the request to the FirstAPI server 
+ 6. Process the request results
 
 The following sections describe in more detail how to use the FirstAPI credentials to interact with Pay with Google and with FirstAPI.
 
@@ -53,8 +54,9 @@ The returned token will be a UTF8 encoded serialized JSON dictionary with the fo
 | Name | Type | Description || --- | --- | --- || encryptedMessage | String(Base64) | The encrypted message. || ephemeralPublicKey | String (base64) | The ephemeral public key associated with thePrivate key used to encrypt the message. || tag | String (base64) | MAC of encryptedMessage |
 For example:
 ## Issuing the FirstAPI Request
-Once the Full Wallet is received and the token extracted and parsed, the FirstAPI request can be created. Note that while the previous steps had to be completed on the mobile device, issuing the Payeezy request can be done from the mobile device or from a server that receives the Full Wallet token.
-The request uses a REST POST message with a JSON payload. As mentioned before, the four remaining items issued by Payeezy will be used when issuing the request. The following table describes where the items are used:
+Once the Full Wallet is received and the token extracted and parsed, the FirstAPI request can be created. 
+
+The request uses a REST POST message with a JSON payload. As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
 
 | Name | Used in |
 | --- | --- |
@@ -64,7 +66,9 @@ The request uses a REST POST message with a JSON payload. As mentioned before, t
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through three HTTP headers. |
 
 ## The FirstAPI Request
-For a full explanation of the FirstAPI API please refer to the FirstAPI Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions). Following is an example of a Payeezy request payload:
+For a full explanation of the FirstAPI API please refer to the FirstAPI Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions). 
+
+The following is an example of a FirstAPI request payload:
 ```
 {  "currency_code": "USD",  
    "amount": "001",  
@@ -74,10 +78,10 @@ For a full explanation of the FirstAPI API please refer to the FirstAPI Develope
    "3DS": {    
          "signature": "MEYCIQDfe+NNUN/FTALysbWGMAqwqQfIKZ/Pqsbjkq0thdz4zwIhAN8hybr1BPTfp0Z11UXWSXDffpM0mnbQ/MCrsQaOXgQ6",    
          "type": "G",    
-         "version": "ECv1",    
+         "version": "ECv1",
          "data":"{\"encryptedMessage\":\"7gUCb+nYwydKXg40H2K19/OlGIAmGUfeim5YuTOHOj8YygKpQuRbueqrtoT2V39dTBd+0eq9tqLkPit9mksGM6IwAZkbhMeuHoFFNevpRHP+9QHwYcMadsKgYv4tdHnEd3zOq8zSc63KC2FudKcHXHeiL8MwRAMSMSdOiEBJjg3ZdFS2K6HnVxuZZah1HK/w2FIIsInutS1ItPyDxm+wvmDd6ahvERsJQdUitK6S5KQ2UC4kBhdhJX6dosBybbSk89ux7hxbBYWdiCU8ARCYsFQ237YXMasajg3woWkzYxKOlqTtpm4YVoH327lwkXBgwo0CL6BTfOH3tylZLw59+XytpEEIVZdvIibpo+mm4odw/eBdFuxazlC20XaSfIOP620tyTE8lh8Qf28Aea/CNyvYXOgfDURiTEed1KlRIATKkBIwrOwsB//gmiNcuOKcEFO3jNsSlg\\u003d\\u003d\",\"ephemeralPublicKey\":\"BCzn9AukQpQXQYUax5nh4e5dl8D8az1T0XpWHd/6PssLIRq7SpWEiuO/Sr5WSPhf4SD15EtmF6zhnjD1MwciqJA\\u003d\",\"tag\":\"oL67zq3qfISY0TRp5vW7CVNPZlL3bYmV8bcIa1n6SDM\\u003d\"}"  
          }
-         }
+ }
 ```
 
 The following table describes the contents of the request fields:
@@ -87,26 +91,29 @@ The following table describes the contents of the request fields:
 | currency\_code | Code of the currency used in the transaction. For example, USD denotes US Dollars. |
 | amount | The transaction amount in cents. For example, 10000 is $100.00. |
 | merchant\_ref | The merchant's order number. |
+| transaction\_type \ The transaction type the merchant wants to process
 | method | Must be "3DS" |
 | transaction\_type | Describes the type of transaction, for example "purchase" |
-| publicKeyHash | The public key hash string that was provided by Payeezy. |
-| ephemeralPublicKey | The "ephemeralPublicKey" field extracted from the token returned by Android Pay. |
-| signature | The "tag" field extracted from the token returned by Android Pay |
-| type | Must be "G" |
-| data | The "encryptedMessage" field extracted from the token returned by Android Pay |
+| 3DS.signature | Signature for verifying that the message comes from Google |
+| 3.DS.type | Should be set to "G" for Pay with Google |
+| 3DS.version | Should be set to ECv1 |
+| 3DS.data.encryptedMessage |  |The encrypted message containing the actual payment information as well as additional security fields. |
+| 3DS.data.ephemeralPublicKey | The "ephemeralPublicKey" field extracted from the token returned by Pay with Google. |
+| 3DS.data.tag | MAC of encryptedMessage |
+
 
 The request should include the following HTTP headers:
 
 | Header | Description |
 | --- | --- |
-| apikey | The API Key provided by Payeezy |
-| token | The token provided by Payeezy |
+| apikey | The API Key provided by FirstAPI |
+| token | The token provided by FirstAPI |
 | content-type | "Application/json" |
-| Authorization | Value computed from the Secret and the payload (see the code to compute the HMAC in the Android Pay sample application) |
-| nonce | see the code to compute the HMAC in the Android Pay sample application |
-| timestamp | see the code to compute the HMAC in the Android Pay sample application |
+| Authorization | Value computed from the Secret and the payload (see the code to compute the HMAC in the Pay with Google sample application) |
+| nonce | see the code to compute the HMAC in the Pay with Google sample application |
+| timestamp | see the code to compute the HMAC in the Pay with Google sample application |
 
-The response from the Payeezy servers describes the results of the transaction. A sample response:
+The response from the FirstAPI servers describes the results of the transaction. A sample response:
 ```
 {
   "correlation_id": "55.5102426711995",
