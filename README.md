@@ -22,37 +22,28 @@ When creating an encryption key, FirstAPI provides the following:
 - The Public key
 - The Public key hash
 
-The public key and the public key hash are provided in the Certs page of the FirstAPI Developer Portal.
-Of the five items above, only the public key is required in order to communicate with Pay with Google. The other four are used in communicating with FirstAPI.
-
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
 
  1. Interacting with the user to get the service or merchandise that the user wishes to purchase. 
- 2. Displaying the "Pay with Google button with reference to the Masked Wallet request 
- 4. Obtaining the Masked Wallet object from Android Pay 
- 5. Obtaining the Full Wallet object from Android Pay 6. Using the token retrieved from the Full Wallet object to send the request to the FirstAPI server 
- 6. Process the request results
+ 2. Displaying the "Pay with Google button  
+ 4. Sending a credential request to Pay with Google with the Processor name and Merchant ID 
+ 5. Obtaining the Payment Credentials signed with the First Data key from Pay with Google
+ 6. Using the Payment Credentials to send the request to the FirstAPI server 
+ 7. Process the request results
 
 The following sections describe in more detail how to use the FirstAPI credentials to interact with Pay with Google and with FirstAPI.
 
-## Issuing a Masked Wallet Request
-When issuing a Masked Wallet request to Android Pay, the Public Key issued by Payeezy should be provided to Android Pay which uses it to encrypt the transaction details.
-To create the MaskedWalletRequest we set the following two parameters:
-1. PaymentMethodTokenizationType is set to NETWORK\_TOKEN
-2. PaymentMethodTokenizationParameters is set with the Payeezy provided PublicKey
+## Requesting Credentials
 
-Sample MaskedWalletRequest Code:
+To create the credential request the developer needs:
+1. The Merchant ID
+2. The Gateway Tokenization parameter, which is set to 'firstdata'
 
-## Issuing Full Wallet Request
-We get the encrypted payload returned by Android Pay in the Full Wallet response, as a token. The data included in the token should be sent to the Payeezy server in order to process the transaction.
-The Full Wallet request uses the Masked Wallet retrieved in the previous step.
-      
- Once the Full Wallet is received, the Payment Method Token can be extracted and parsed:
+The public key and the public key hash are provided in the Certs page of the FirstAPI Developer Portal.
+Of the five items above, only the public key is required in order to communicate with Pay with Google. The other four are used in communicating with FirstAPI.
 
-The returned token will be a UTF8 encoded serialized JSON dictionary with the following keys:
-| Name | Type | Description || --- | --- | --- || encryptedMessage | String(Base64) | The encrypted message. || ephemeralPublicKey | String (base64) | The ephemeral public key associated with thePrivate key used to encrypt the message. || tag | String (base64) | MAC of encryptedMessage |
-For example:
+
 ## Issuing the FirstAPI Request
 Once the Full Wallet is received and the token extracted and parsed, the FirstAPI request can be created. 
 
