@@ -59,7 +59,7 @@ The request uses a REST POST message with a JSON payload. As mentioned before, t
 | API Key | The apikey HTTP header |
 | Token | The token HTTP header |
 | Public Key Hash | Used in the request payload |
-| API Secret | Used to compute the HMAC. The HMAC is added to the request through three HTTP headers. |
+| API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers. |
 
 ## The FirstAPI Request
 For a full explanation of the FirstAPI API please refer to the FirstAPI Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions). 
