@@ -46,7 +46,7 @@ Google will return the encrypted payload to the app.
 
 ## Issuing the FirstAPI Request
 
-The FirstAPI request uses a RESTful library Volley to send the request to First Data (the payment processor.) As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
+The FirstAPI request uses the RESTful library Volley to send the request to First Data (the payment processor.) As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
 
 | Name | Used in |
 | --- | --- |
