@@ -50,9 +50,8 @@ Of the five items above, only the public key is required in order to communicate
 
 
 ## Issuing the FirstAPI Request
-Once the Full Wallet is received and the token extracted and parsed, the FirstAPI request can be created. 
 
-The request uses a REST POST message with a JSON payload. As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
+The FirstAPI request uses a REST POST message with a JSON payload. As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
 
 | Name | Used in |
 | --- | --- |
