@@ -18,15 +18,13 @@ Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with
 
 In addition, the Developer should create an encryption key to be used when creating the Pay with Google payload. The encryption key created should be specific for Pay with Google.
 
-When creating an encryption key, FirstAPI provides the following:
-- The Public key
 
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
 
  1. Interacting with the user to get the service or merchandise that the user wishes to purchase. 
  
- 2. Displaying the "Pay with Google button.
+ 2. Displaying the "Pay with Google" button.
  
  3. Sending a credential request to Pay with Google with the Processor name and Merchant ID.
  
@@ -44,7 +42,7 @@ To create the credential request the developer needs:
 1. The Merchant ID
 2. The Gateway Tokenization parameter, which is set to 'firstdata'
 
-Google will return the encrypted payload to the app. See the following for a sample encrypted payload:
+Google will return the encrypted payload to the app. 
 
 ## Issuing the FirstAPI Request
 
