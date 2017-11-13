@@ -20,7 +20,6 @@ In addition, the Developer should create an encryption key to be used when creat
 
 When creating an encryption key, FirstAPI provides the following:
 - The Public key
-- The Public key hash
 
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
@@ -31,7 +30,7 @@ The typical flow of an application using Pay with Google will be as following:
  
  3. Sending a credential request to Pay with Google with the Processor name and Merchant ID.
  
- 4. Obtaining the Payment Credentials signed with the First Data key from Pay with Google.
+ 4. Obtaining the Payment Credentials encrypted with the First Data key from Google.
  
  5. Using the Payment Credentials to send the request to the FirstAPI server.
  
@@ -45,19 +44,16 @@ To create the credential request the developer needs:
 1. The Merchant ID
 2. The Gateway Tokenization parameter, which is set to 'firstdata'
 
-The public key and the public key hash are provided in the Certs page of the FirstAPI Developer Portal.
-Of the five items above, only the public key is required in order to communicate with Pay with Google. The other four are used in communicating with FirstAPI.
-
+Google will return the encrypted payload to the app. See the following for a sample encrypted payload:
 
 ## Issuing the FirstAPI Request
 
-The FirstAPI request uses a REST POST message with a JSON payload. As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
+The FirstAPI request uses a RESTful library Volley to send the request to First Data (the payment processor.) As mentioned before, the four remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
 
 | Name | Used in |
 | --- | --- |
 | API Key | The apikey HTTP header |
 | Token | The token HTTP header |
-| Public Key Hash | Used in the request payload |
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers. |
 
 ## The FirstAPI Request
@@ -141,4 +137,11 @@ The response from the FirstAPI servers describes the results of the transaction.
 For an explanation of the response fields please refer to the FirstAPI Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions).
 
 # Sample Application 
-The sample application provided on GitHub demonstrates how FirstAPI can be used to process Pay with Google requests.  
+The sample application provided on GitHub demonstrates how FirstAPI can be used to process Pay with Google requests. The application makes use of the [Volley library] (http://developer.android.com/training/volley/index.html) to issue REST requests to the FirstAPI servers.
+
+The application requires the following permissions:
+
+- android.permission.INTERNET
+
+- android.permission.ACCESS_NETWORK_STATE
+ 
