@@ -78,7 +78,7 @@ The following table describes the contents of the request fields:
 | currency\_code | Code of the currency used in the transaction. For example, USD denotes US Dollars. |
 | amount | The transaction amount in cents. For example, 10000 is $100.00. |
 | merchant\_ref | The merchant's order number. |
-| transaction\_type \ The transaction type the merchant wants to process
+| transaction\_type | The transaction type the merchant wants to process
 | method | Must be "3DS" |
 | transaction\_type | Describes the type of transaction, for example "purchase" |
 | 3DS.signature | Signature for verifying that the message comes from Google |
