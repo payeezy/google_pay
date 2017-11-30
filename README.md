@@ -16,8 +16,6 @@ The following information is provided when you register on the FirstAPI Develope
 
 Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf) for instructions how to register with FirstAPI and get the information to get you going.
 
-In addition, the Developer should create an encryption key to be used when creating the Pay with Google payload. The encryption key created should be specific for Pay with Google.
-
 
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
