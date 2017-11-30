@@ -48,8 +48,8 @@ The FirstAPI request uses the RESTful library Volley to send the request to Firs
 
 | Name | Used in |
 | --- | --- |
-| API Key | The apikey HTTP header |
-| Token | The token HTTP header |
+| API Key | HTTP header |
+| Token | HTTP header |
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers. |
 
 ## The FirstAPI Request
