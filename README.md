@@ -1,1 +1,1 @@
-Document in progress
+Pay with Google documentation in progress
