@@ -1,11 +1,14 @@
-# FirstAPI Pay With Google
+# Pay With Google
 
-The document describes how developer can use FirstAPI to process a Pay with Google  transaction.
-The integration process first step consists of boarding the developer and the merchant into the FirstAPI platform, getting the required credentials.
-Once boarded, the application can be implemented and tested by sending requests to the FirstAPI platforms, using the credentials received in the first step.
+The document describes how developer can use First Data's RESTful API solution to process a Pay with Google  transaction.
+The integration process first step consists of registering the developer and boarding the merchant into the API platform, and then getting the required credentials. 
+
+Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf) for instructions how to register and get the information to get you going.
+
+Once registered, the application can be implemented and tested by sending requests to the API platforms, using the credentials received in the first step.
 # Requirements
 - Android version 4.4 (KitKat) or higher
-- The Pay with Google application installed on the test device
+- The Pay with Google application installed on an Android mobile device
 - The latest version of Google Play Services (11.4.x)
 
 # Obtaining Credentials
@@ -14,37 +17,37 @@ The following information is provided when you register on the FirstAPI Develope
 - Token – identifies the Merchant
 - API Secret – used to compute the HMAC signature
 
-Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf) for instructions how to register with FirstAPI and get the information to get you going.
 
 
 # Application Flow
 The typical flow of an application using Pay with Google will be as following:
 
- 1. Interacting with the user to get the service or merchandise that the user wishes to purchase. 
+ 1. On the mobile app or website, the consumer selects the service or merchandise they wish to purchase and places it into their shopping cart.  
  
- 2. Displaying the "Pay with Google" button.
+ 2. The "Pay with Google" button is displayed on the checkout page of the mobile app or website to allow the consumer to select as payment method.
  
- 3. Sending a credential request to Pay with Google with the Processor name and Merchant ID.
- 
- 4. Obtaining the Payment Credentials encrypted with the First Data key from Google.
- 
- 5. Using the Payment Credentials to send the request to the FirstAPI server.
- 
- 6. Process the request results
+ 3. The merchant/client server issues a credential request with the Merchant ID and Processor Name as First Data to Google.
+ For a full explanation of the API please refer to the [Developer Portal](https://developer.payeezy.com/). 
 
+ 4. Google returns response with encrypted payment credentials signed with the First Data key to the merchant server.
+ 
+ 5. The Merchant sends the encrypted payload to First Data.
+ 
+ 6. First Data decrypts and validates the payload,  and then processes the transaction and responds back to merchant with either an approval or decline response.
+ 
 The following sections describe in more detail how to use the FirstAPI credentials to interact with Pay with Google and with FirstAPI.
 
 ## Requesting Credentials
 
 To create the credential request the developer needs:
-1. The Merchant ID
+1. The First Data-issued Merchant ID
 2. The Gateway Tokenization parameter, which is set to 'firstdata'
 
 Google will return the encrypted payload to the app. 
 
-## Issuing the FirstAPI Request
+## Request Header Parameters
 
-The FirstAPI request uses the RESTful library Volley to send the request to First Data (the payment processor.) As mentioned before, the remaining items issued by FirstAPI will be used when issuing the request. The following table describes where the items are used:
+The API request uses the RESTful library Volley to send the request to First Data (the payment processor.) The following table describes the parameters used as the request header:
 
 | Name | Used in |
 | --- | --- |
@@ -52,8 +55,7 @@ The FirstAPI request uses the RESTful library Volley to send the request to Firs
 | Token | HTTP header |
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers. |
 
-## The FirstAPI Request
-For a full explanation of the FirstAPI API please refer to the FirstAPI Developer Portal at (https://developer.payeezy.com/). 
+## Sample Request Payload
 
 The following is an example of a FirstAPI request payload:
 ```
@@ -93,14 +95,14 @@ The request should include the following HTTP headers:
 
 | Header | Description |
 | --- | --- |
-| apikey | The API Key provided by FirstAPI |
-| token | The token provided by FirstAPI |
+| apikey | The API Key provided by First Data |
+| token | The token provided by First Data |
 | content-type | "Application/json" |
 | Authorization | Value computed from the Secret and the payload (see the code to compute the HMAC in the Pay with Google sample application) |
 | nonce | see the code to compute the HMAC in the Pay with Google sample application |
 | timestamp | see the code to compute the HMAC in the Pay with Google sample application |
 
-The response from the FirstAPI servers describes the results of the transaction. A sample response:
+The response from the First Data servers describes the results of the transaction. A sample response:
 ```
 {
   "correlation_id": "55.5102426711995",
@@ -130,10 +132,10 @@ The response from the FirstAPI servers describes the results of the transaction.
   "gateway_message": "Transaction Normal"
 }
 ```
-For an explanation of the response fields please refer to the FirstAPI Developer Portal at [https://developer.payeezy.com/payeezy-api/apis/post/transactions](https://developer.payeezy.com/payeezy-api/apis/post/transactions).
+For an explanation of the response fields please refer to the [Pay with Google API](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17) at the Developer Portal.
 
 # Sample Application 
-The sample application provided on GitHub demonstrates how FirstAPI can be used to process Pay with Google requests. The application makes use of the [Volley library] (http://developer.android.com/training/volley/index.html) to issue REST requests to the FirstAPI servers.
+The [sample application](https://github.com/payeezy/pay_with_google/tree/master/sdk) provided on GitHub demonstrates how First Data's RESTful API can be used to process Pay with Google requests. The application makes use of the [Volley library](http://developer.android.com/training/volley/index.html) to issue REST requests to the First Data servers.
 
 The application requires the following permissions:
 
