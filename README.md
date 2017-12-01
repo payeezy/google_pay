@@ -53,7 +53,7 @@ The FirstAPI request uses the RESTful library Volley to send the request to Firs
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers. |
 
 ## The FirstAPI Request
-For a full explanation of the FirstAPI API please refer to the FirstAPI [Developer Portal] (https://developer.payeezy.com/). 
+For a full explanation of the FirstAPI API please refer to the FirstAPI Developer Portal at (https://developer.payeezy.com/). 
 
 The following is an example of a FirstAPI request payload:
 ```
