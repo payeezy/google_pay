@@ -128,7 +128,9 @@ The response from the First Data servers describes the results of the transactio
 For an explanation of the response fields please refer to the [Pay with Google API](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17) at the Developer Portal.</p>
 
 # Sample Application 
-The <a href="https://github.com/payeezy/pay_with_google/tree/master/sdk">sample application</a> provided on GitHub demonstrates how First Data's RESTful API can be used to process Pay with Google requests. The application makes use of the <a href="http://developer.android.com/training/volley/index.html" rel="nofollow">Volley library</a> to issue REST requests to the First Data servers.
+The First Data <a href="https://github.com/payeezy/pay_with_google/tree/master/sdk">sample application</a> provided on GitHub demonstrates how First Data's RESTful API can be used to process Pay with Google requests. The application makes use of the <a href="http://developer.android.com/training/volley/index.html" rel="nofollow">Volley library</a> to issue REST requests to the First Data servers.
+
+This sample application runs in the First Data CERT environment and the Google test environment. It is provided to show how the First Data APIs support the Pay with Google feature. 
 
 The application requires the following permissions:
 
