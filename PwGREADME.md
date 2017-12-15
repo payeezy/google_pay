@@ -2,7 +2,7 @@
 The document describes how developer can use First Data's RESTful API solution to process a Pay with Google  transaction.
 The integration process first step consists of registering the developer and boarding the merchant into the API platform, and then getting the required credentials.
 
-Refer to the <a href="https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf">Getting Started Guide</a> for instructions how to register and get the information to get you going.
+Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf) for instructions how to register and get the information to get you going.
 
 Once registered, the application can be implemented and tested by sending requests to the API platforms, using the credentials received in the first step.
 
@@ -23,7 +23,7 @@ The typical flow of an application using Pay with Google will be as following:
 1. On the mobile app or website, the consumer selects the service or merchandise they wish to purchase and places it into their shopping cart. 
 2. The "Pay with Google" button is displayed on the checkout page of the mobile app or website to allow the consumer to select as payment method.
 3. The merchant/client server issues a credential request with the Merchant ID and Processor Name as First Data to Google.
-For a full explanation of the API please refer to the <a href="https://developer.payeezy.com/" rel="nofollow">Developer Portal</a>.
+For a full explanation of the API please refer to the [Developer Portal](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17).
 4. Google returns response with encrypted payment credentials signed with the First Data key to the merchant server.</p>
 5. The Merchant sends the encrypted payload to First Data.</p>
 6. First Data decrypts and validates the payload,  and then processes the transaction and responds back to merchant with either an approval or decline response.
@@ -125,7 +125,7 @@ The response from the First Data servers describes the results of the transactio
 }
 ``` 
 
-For an explanation of the response fields please refer to the <a href="https://developer.payeezy.com/payeezy-api/apis/post/transactions-17" rel="nofollow">Pay with Google API</a> at the Developer Portal.</p>
+For an explanation of the response fields please refer to the [Pay with Google API](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17) at the Developer Portal.</p>
 
 # Sample Application 
 The <a href="https://github.com/payeezy/pay_with_google/tree/master/sdk">sample application</a> provided on GitHub demonstrates how First Data's RESTful API can be used to process Pay with Google requests. The application makes use of the <a href="http://developer.android.com/training/volley/index.html" rel="nofollow">Volley library</a> to issue REST requests to the First Data servers.
