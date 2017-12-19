@@ -48,7 +48,7 @@ The API request uses the RESTful library Volley to send the request to First Dat
 | API Secret | Used to compute the HMAC. The HMAC is added to the request through the HTTP headers.|
 
 ## Sample Request Payload
-The following is an example of a FirstAPI request payload:
+The following is an example of a First Data API request payload:
 
 ```
 {  "currency_code": "USD",  
