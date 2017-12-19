@@ -13,7 +13,7 @@ Once registered, the application can be implemented and tested by sending reques
 - The latest version of Google Play Services (11.4.x)
 
 ## Obtaining Credentials
-The following information is provided when you register on the FirstAPI Developer Portal
+The following information is provided when you register on the First Data Developer Portal
 - API Key – identifies the Developer
 - Token – identifies the Merchant
 - API Secret – used to compute the HMAC signature
@@ -28,7 +28,7 @@ For a full explanation of the API please refer to the [Developer Portal](https:/
 5. The Merchant sends the encrypted payload to First Data.</p>
 6. First Data decrypts and validates the payload,  and then processes the transaction and responds back to merchant with either an approval or decline response.
 
-The following sections describe in more detail how to use the FirstAPI credentials to interact with Pay with Google and with FirstAPI.
+The following sections describe in more detail how to use the First Data credentials to interact with Pay with Google and with the First Data API.
 
 ## Requesting Credentials
 To create the credential request the developer needs:
