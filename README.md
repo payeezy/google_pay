@@ -1,5 +1,5 @@
-# Pay With Google
-The document describes how developer can use First Data's RESTful API solution to process a Pay with Google  transaction.
+# Google Pay
+The document describes how developer can use First Data's RESTful API solution to process a Google Pay  transaction.
 The integration process first step consists of registering the developer and boarding the merchant into the API platform, and then getting the required credentials.
 
 Refer to the [Getting Started Guide](https://github.com/payeezy/get_started_with_payeezy/blob/master/get_started_with_payeezy042015.pdf) for instructions how to register and get the information to get you going.
@@ -9,7 +9,7 @@ Once registered, the application can be implemented and tested by sending reques
 ## Requirements
 
 - Android version 4.4 (KitKat) or higher
-- The Pay with Google application installed on an Android mobile device
+- The Google Pay application installed on an Android mobile device
 - The latest version of Google Play Services (11.4.x)
 
 ## Obtaining Credentials
@@ -19,16 +19,16 @@ The following information is provided when you register on the First Data Develo
 - API Secret – used to compute the HMAC signature
 
 ## Application Flow
-The typical flow of an application using Pay with Google will be as following:
+The typical flow of an application using Google Pay will be as following:
 1. On the mobile app or website, the consumer selects the service or merchandise they wish to purchase and places it into their shopping cart. 
-2. The "Pay with Google" button is displayed on the checkout page of the mobile app or website to allow the consumer to select as payment method.
+2. The "Google Pay" button is displayed on the checkout page of the mobile app or website to allow the consumer to select as payment method.
 3. The merchant/client server issues a credential request with the Merchant ID and Processor Name as First Data to Google.
 For a full explanation of the API please refer to the [Developer Portal](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17).
 4. Google returns response with encrypted payment credentials signed with the First Data key to the merchant server.</p>
 5. The Merchant sends the encrypted payload to First Data.</p>
 6. First Data decrypts and validates the payload,  and then processes the transaction and responds back to merchant with either an approval or decline response.
 
-The following sections describe in more detail how to use the First Data credentials to interact with Pay with Google and with the First Data API.
+The following sections describe in more detail how to use the First Data credentials to interact with Google Pay and with the First Data API.
 
 ## Requesting Credentials
 To create the credential request the developer needs:
@@ -76,10 +76,10 @@ The following table describes the contents of the request fields:
 | method | Must be "3DS" |
 | transaction_type | Describes the type of transaction, for example "purchase" |
 | 3DS.signature | Signature for verifying that the message comes from Google |
-| 3DS.type | Should be set to "G" for Pay with Google | 
+| 3DS.type | Should be set to "G" for Google Pay | 
 | 3DS.version | Should be set to ECv1 |
 | 3DS.data.encryptedMessage | | 
-| 3DS.data.ephemeralPublicKey | The "ephemeralPublicKey" field extracted from the token returned by Pay with Google. |
+| 3DS.data.ephemeralPublicKey | The "ephemeralPublicKey" field extracted from the token returned by Google Pay. |
 | 3DS.data.tag | MAC of encryptedMessage |
 
 The request should include the following HTTP headers:</p>
@@ -89,9 +89,9 @@ The request should include the following HTTP headers:</p>
 | apikey | The API Key provided by First Data |
 | token | The token provided by First Data |
 | content-type | "Application/json" |
-| Authorization | Value computed from the Secret and the payload (see the code to compute the HMAC in the Pay with Google sample application) |
-| nonce | see the code to compute the HMAC in the Pay with Google sample application |
-| timestamp | see the code to compute the HMAC in the Pay with Google sample application |
+| Authorization | Value computed from the Secret and the payload (see the code to compute the HMAC in the Google Pay sample application) |
+| nonce | see the code to compute the HMAC in the Google Pay sample application |
+| timestamp | see the code to compute the HMAC in the Google Pay sample application |
 
 The response from the First Data servers describes the results of the transaction. A sample response:</p>
 
@@ -125,12 +125,12 @@ The response from the First Data servers describes the results of the transactio
 }
 ``` 
 
-For an explanation of the response fields please refer to the [Pay with Google API](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17) at the Developer Portal.</p>
+For an explanation of the response fields please refer to the First Data [Google Pay API](https://developer.payeezy.com/payeezy-api/apis/post/transactions-17) at the Developer Portal.</p>
 
 # Sample Application 
-The First Data <a href="https://github.com/payeezy/pay_with_google/tree/master/sdk">sample application</a> provided on GitHub demonstrates how First Data's RESTful API can be used to process Pay with Google requests. The application makes use of the <a href="http://developer.android.com/training/volley/index.html" rel="nofollow">Volley library</a> to issue REST requests to the First Data servers.
+The First Data <a href="https://github.com/payeezy/pay_with_google/tree/master/sdk">sample application</a> provided on GitHub demonstrates how First Data's RESTful API can be used to process Google Pay requests. The application makes use of the <a href="http://developer.android.com/training/volley/index.html" rel="nofollow">Volley library</a> to issue REST requests to the First Data servers.
 
-This sample application runs in the First Data CERT environment and the Google test environment. It is provided to show how the First Data APIs support the Pay with Google feature. 
+This sample application runs in the First Data CERT environment and the Google test environment. It is provided to show how the First Data APIs support the Google Pay feature. 
 
 The application requires the following permissions:
 
